@@ -15,14 +15,19 @@ const billingConfig = {
 
 const shopify = shopifyApp({
   api: {
-    apiVersion: LATEST_API_VERSION,
-    restResources,
-    future: {
-      customerAddressDefaultFix: true,
-      lineItemBilling: true,
-      unstable_managedPricingSupport: true,
-    },
-    billing: undefined, // or replace with billingConfig above to enable example billing
+    apiKey: process.env.SHOPIFY_API_KEY,
+    apiSecretKey: process.env.SHOPIFY_API_SECRET,
+    scopes: process.env.SCOPES,
+    hostScheme: 'https',
+    hostName: `${process.env.HOST}`,
+    // apiVersion: LATEST_API_VERSION,
+    // restResources,
+    // future: {
+    //   customerAddressDefaultFix: true,
+    //   lineItemBilling: true,
+    //   unstable_managedPricingSupport: true,
+    // },
+    // billing: undefined,
   },
   auth: {
     path: "/api/auth",
